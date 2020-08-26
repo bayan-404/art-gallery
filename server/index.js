@@ -45,5 +45,5 @@ app
     console.error(err.stack);
     //kill the process with an exit code of 1 so that the server kind of just crashes and burns 
     process.exit(1);
-    z;
+    
   });
