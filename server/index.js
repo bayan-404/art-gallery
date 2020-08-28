@@ -18,32 +18,31 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 app
-// .prepair prepaire it to go to 'next' file or next framework
+  // .prepair prepaire it to go to 'next' file or next framework
   .prepare()
-// here you can launch your server 
+  // here you can launch your server
   .then(() => {
     const server = express();
-  
-    server.get('/api/category' , (req, res)=>{
-      return res.send('the server is ready !')
-    })
-// grab and rout and , tell express to include the index.html .... 
-    server.get('*',(req , res)=> {
-      //this is just next taking care of some of the heavy lifting for us in case we have different kind of routes 
-      return handle(req , res)
+
+    server.get('/api/category', (req, res) => {
+      return res.send('the server is ready !');
     });
-    
-    server.listen(PORT , err => {
-      if(err) throw err;
-      console.log(`ready on ${PORT}`)
-    })
+    // grab and rout and , tell express to include the index.html ....
+    server.get('*', (req, res) => {
+      //this is just next taking care of some of the heavy lifting for us in case we have different kind of routes
+      return handle(req, res);
+    });
+
+    server.listen(PORT, (err) => {
+      if (err) throw err;
+      console.log(`ready on ${PORT}`);
+    });
   })
 
-  // we catch the error this way here ... 
-  // in some codes it's 'ex' = exceptions 
+  // we catch the error this way here ...
+  // in some codes it's 'ex' = exceptions
   .catch((err) => {
     console.error(err.stack);
-    //kill the process with an exit code of 1 so that the server kind of just crashes and burns 
+    //kill the process with an exit code of 1 so that the server kind of just crashes and burns
     process.exit(1);
-    
   });
