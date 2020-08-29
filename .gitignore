@@ -2,6 +2,7 @@ node_modules
 # next.js build output
 .next
 
-config.env
+# the env file for next.js
+.env.local
 
 package-lock.json
