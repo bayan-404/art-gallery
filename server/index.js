@@ -22,7 +22,14 @@ app
   .prepare()
   // here you can launch your server
   .then(() => {
+    const buildJs = require('./database/config/db.build');
+
     const server = express();
+    //--------------------------------------- build the database ------------------------------------------
+    // buildJs()
+    //   .then((res) => console.log('resposne', res))
+    //   .catch((err) => console.log('error', err))
+    //-----------------------------------------------------------------------------------------------------
 
     server.get('/api/category', (req, res) => {
       return res.send('the server is ready !');
